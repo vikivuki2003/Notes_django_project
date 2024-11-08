@@ -1,5 +1,5 @@
 """
-ASGI config for notes_site project.
+ASGI config for config_app project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'notes_site.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config_app.settings')
 
 application = get_asgi_application()
