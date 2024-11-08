@@ -8,11 +8,11 @@ from .forms import CustomUserCreationForm, NotesForm
 from .models import Notes
 
 
-class HomeView(LoginRequiredMixin, ListView):
+class HomeView(ListView):
     model = Notes
     template_name = 'notes_app/home.html'
     context_object_name = 'notes'
-    success_url = reverse_lazy('home')
+
 
     def get_queryset(self):
         return Notes.objects.filter(user=self.request.user)
@@ -32,7 +32,7 @@ class RegisterView(CreateView):
 class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Notes
     template_name = 'notes_app/note_detail.html'
-    context_object_name = 'note'
+    context_object_name = 'notes'
 
 
     def get_queryset(self):
@@ -75,4 +75,4 @@ def note_delete_view(request, pk):
         messages.success(request, 'Заметка успешно удалена!')
         return redirect('notes_app:home')
 
-    return render(request, 'notes_app/note_delete.html', {'object': note})
+    return render(request, 'notes_app/home.html', {'object': note})

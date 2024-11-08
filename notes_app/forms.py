@@ -18,8 +18,11 @@ class CustomUserCreationForm(UserCreationForm):
     from django.contrib.auth.models import User
 
 
-
 class NotesForm(forms.ModelForm):
     class Meta:
         model = Notes
-        fields = ('title', 'content')
+        fields = ['title', 'content']  # Поля вашей модели
+        widgets = {
+            'title': forms.TextInput(attrs={'placeholder': 'Введите заголовок'}),
+            'content': forms.Textarea(attrs={'placeholder': 'Введите содержимое'}),
+        }

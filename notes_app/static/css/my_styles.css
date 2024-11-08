@@ -1,0 +1,116 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(227, 227, 219, 0.93);
+}
+
+/* Заголовки */
+h1, h2 {
+    color: #444;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Стили для абзацев */
+p {
+    margin: 15px 0;
+    color: #555;
+}
+
+/* Стили для ссылок */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопки */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ddd5d5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Стили для формы */
+.form-container {
+    flex-basis: 30%;
+    margin-right: 20px; /* Уменьшаем отступ справа */
+}
+
+/* Карточка (пример компонента) */
+.card {
+    background-color: #fefefe; /* Цвет фона карточки */
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Более заметная тень */
+    padding: 20px;
+    margin-bottom: 20px; /* Отступ снизу */
+    transition: transform 0.3s; /* Плавный переход при наведении */
+}
+
+.card:hover {
+    transform: translateY(-2px); /* Подъем карточки при наведении */
+}
+
+/* Контейнер для заметок */
+.notes-container {
+    display: flex; /* Используем flexbox для контейнера заметок */
+    flex-wrap: wrap; /* Позволяем колонкам переноситься */
+    gap: 10px; /* Расстояние между заметками */
+}
+
+.messages {
+    list-style-type: none; /* Без маркеров для списка сообщений */
+    padding: 0; /* Убираем отступы */
+}
+
+.messages li {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px; /* Закругленные углы для сообщений */
+}
+
+.messages .success {
+    background-color: #d4edda; /* Зеленый фон для успешного сообщения */
+    color: #155724; /* Темно-зеленый цвет текста */
+}
+.notes-column {
+    flex-basis: calc(20% - 20px); /* Каждая колонка занимает 20% ширины минус отступы */
+    margin-right: 10px; /* Отступ между колонками */
+}
+
+.note-item {
+    width: 300px; /* Фиксированная ширина для заметок */
+    height: 300px; /* Фиксированная высота для заметок */
+    box-sizing: border-box; /* Включаем отступы и границы в размеры элемента */
+    margin-bottom: 20px; /* Отступ между заметками по высоте */
+    display: flex; /* Используем flexbox внутри заметки */
+    flex-direction: column; /* Вертикальная компоновка */
+    justify-content: space-between; /* Равномерное распределение */
+}
