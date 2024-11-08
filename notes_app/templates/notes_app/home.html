@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Заметки</title>
+</head>
+<body class="body">
+    <h1>Мои Заметки</h1>
+    <div class="container">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    <div class="container">
+        <!-- Форма для создания новой заметки -->
+        <div class="form-container">
+            <h2>Создать новую заметку</h2>
+            <form action="{% url 'notes_app:note_create' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="button">Сохранить</button>
+            </form>
+        </div>
+
+        <div class="notes-container">
+            {% for note in notes %}
+                <div class="note-item card">
+                    <h3>{{ note.title }}</h3> <!-- Заголовок заметки -->
+                    <p>{{ note.content }}</p> <!-- Содержимое заметки -->
+                    <small>Создано: {{ note.created_at }}</small>
+
+                    <!-- Кнопки для обновления и удаления заметки -->
+                     <div class="note-actions">
+                <a href="{% url 'notes_app:note_update' note.pk %}" class="button">Обновить</a>
+                <form action="{% url 'notes_app:note_delete' note.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <a href="{% url 'notes_app:note_delete' note.pk %}" class="button">Удалить</a>
+                    <button type="submit" class="button">Удалить</button>  <!-- Кнопка отправки формы -->
+                </form>
+            </div>
+        </div>
+    {% empty %}
+                <div class="note-item card">У вас пока нет заметок.</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

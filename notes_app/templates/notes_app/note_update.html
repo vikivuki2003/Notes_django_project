@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обновить Заметку</title>
+</head>
+<body class="body">
+    <h1>Обновить Заметку</h1>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Редактировать заметку: {{ note.title }}</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- Здесь отображается форма редактирования -->
+                <button type="submit" class="button">Сохранить изменения</button>
+            </form>
+            <a href="{% url 'notes_app:home' %}">Назад к списку заметок</a>
+        </div>
+    </div>
+
+</body>
+</html>

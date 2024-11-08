@@ -1,0 +1,11 @@
+{% extends "notes_app/home.html" %}
+
+{% block content %}
+<h2>Вы уверены, что хотите удалить эту заметку?</h2>
+<p>{{ object.title }}</p>
+<form action="{% url 'notes_app:note_delete' object.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+</form>
+<a href="{% url 'notes_app:home' %}">Отмена</a>
+{% endblock %}
