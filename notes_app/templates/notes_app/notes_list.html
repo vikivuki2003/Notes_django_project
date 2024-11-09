@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+        <section class="note-list">
+            <h2>Список заметок</h2>
+            {% if notes %}
+                <ul>
+                    {% for note in notes %}
+                        <li>
+                            <h3>{{ note.title }}</h3>
+                            <p>{{ note.content }}</p>
+                            <small>Создано: {{ note.created_at }}</small>
+                            <a href="#">Редактировать</a> |
+                            <a href="#">Удалить</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>У вас пока нет заметок. Добавьте новую!</p>
+            {% endif %}
+        </section>
+
+
+    </main>
+</body>
+</html>

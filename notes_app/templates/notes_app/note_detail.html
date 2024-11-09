@@ -1,5 +1,5 @@
 
-{% extends 'notes_app/home.html' %}
+{% extends 'notes_app/main.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +12,6 @@
     <p>{{ note.content }}</p>
     <small>Создано: {{ note.created_at }}</small>
 
-    <a href="{% url 'home' %}">Назад к списку заметок</a>
+    <a href="{% url 'create' %}">Назад к списку заметок</a>
 </body>
 </html>

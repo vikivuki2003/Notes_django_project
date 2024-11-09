@@ -3,12 +3,12 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: rgba(227, 227, 219, 0.93);
+    background-color: rgba(208, 197, 246, 0.93);
 }
 
 /* Заголовки */
 h1, h2 {
-    color: #444;
+    color: #232121;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -21,7 +21,7 @@ p {
 
 /* Стили для ссылок */
 a {
-    color: #007bff;
+    color: #291212;
     text-decoration: none;
 }
 
@@ -113,4 +113,28 @@ a:hover {
     display: flex; /* Используем flexbox внутри заметки */
     flex-direction: column; /* Вертикальная компоновка */
     justify-content: space-between; /* Равномерное распределение */
+}
+
+.message-container {
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    height: 100vh; /* Высота 100% от видимой области */
+    position: relative; /* Для абсолютного позиционирования дочерних элементов */
+}
+
+.messages {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 10px;
+    background-color: #f8f9fa; /* Цвет фона для сообщения */
+    border-radius: 5px; /* Закругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта поднятия */
+}
+
+.success {
+    color: green; /* Цвет текста для успешных сообщений */
+}
+
+.info {
+    color: blue; /* Цвет текста для информационных сообщений */
 }

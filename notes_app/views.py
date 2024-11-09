@@ -1,26 +1,16 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CustomUserCreationForm, NotesForm
 from .models import Notes
 
-
-class HomeView(ListView):
+class MainPageView(ListView):
     model = Notes
-    template_name = 'notes_app/home.html'
+    template_name = 'notes_app/main.html'
     context_object_name = 'notes'
-
-
-    def get_queryset(self):
-        return Notes.objects.filter(user=self.request.user)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = NotesForm()
-        return context
 
 
 class RegisterView(CreateView):
@@ -41,19 +31,19 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
 class NoteCreateView(CreateView):
     model = Notes
     form_class = NotesForm
-    template_name = 'notes_app/home.html'
-    success_url = reverse_lazy('notes_app:home')
+    template_name = 'notes_app/create.html'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        form.save()  # Сохраняем заметку
         messages.success(self.request, 'Заметка успешно создана!')
-        return super().form_valid(form)
+        return self.render_to_response({'form': NotesForm()})  # Возвращаем ту же страницу с сообщением
 
 class NoteUpdateView(UpdateView):
     model = Notes
     form_class = NotesForm
     template_name = 'notes_app/note_update.html'
-    success_url = reverse_lazy('notes_app:home')
+    success_url = reverse_lazy('notes_app:main')
 
     def get_queryset(self):
         return Notes.objects.filter(user=self.request.user)
@@ -73,6 +63,10 @@ def note_delete_view(request, pk):
     if request.method == 'POST':
         note.delete()
         messages.success(request, 'Заметка успешно удалена!')
-        return redirect('notes_app:home')
+        return redirect('notes_app:main')
 
-    return render(request, 'notes_app/home.html', {'object': note})
+    return render(request, 'notes_app/create.html', {'object': note})
+
+def note_list_view(request):
+    notes = Notes.objects.all()  # Извлекаем все заметки
+    return render(request, 'notes_app/notes_list.html', {'notes': notes})
