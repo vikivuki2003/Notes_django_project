@@ -1,0 +1,25 @@
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удалить заметку</title>
+    <link rel="stylesheet" href="{% static 'css/my_styles.css' %}">
+</head>
+<body>
+<main>
+    <section class="delete-note">
+        <h2>Удалить заметку</h2>
+        <p>Вы уверены, что хотите удалить эту заметку?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Удалить</button>
+            <a href="{% url 'notes_app:main' %}">Отмена</a>
+        </form>
+    </section>
+</main>
+</body>
+</html>

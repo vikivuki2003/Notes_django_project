@@ -1,17 +1,26 @@
+{% load static %}
 
-{% extends 'notes_app/main.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ note.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/my_styles.css' %}">
 </head>
 <body>
-    <h1>{{ note.title }}</h1>
-    <p>{{ note.content }}</p>
-    <small>Создано: {{ note.created_at }}</small>
+<main>
+    <section class="note-detail">
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.content }}</p>
+        <small>Создано: {{ note.created_at }}</small>
 
-    <a href="{% url 'create' %}">Назад к списку заметок</a>
+        <!-- Кнопки для редактирования и удаления -->
+        <div class="note-actions">
+            <a href="{% url 'notes_app:note_update' note.pk %}">Редактировать</a> |
+            <a href="{% url 'notes_app:note_delete' note.pk %}">Удалить</a> |
+            <a href="{% url 'notes_app:main' %}">Назад к списку заметок</a>
+        </div>
+    </section>
+</main>
 </body>
 </html>

@@ -22,8 +22,6 @@ class RegisterView(CreateView):
 class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Notes
     template_name = 'notes_app/note_detail.html'
-    context_object_name = 'notes'
-
 
     def get_queryset(self):
         return Notes.objects.filter(user=self.request.user)
@@ -65,7 +63,7 @@ def note_delete_view(request, pk):
         messages.success(request, 'Заметка успешно удалена!')
         return redirect('notes_app:main')
 
-    return render(request, 'notes_app/create.html', {'object': note})
+    return render(request, 'notes_app/delete_note.html', {'object': note})
 
 def note_list_view(request):
     notes = Notes.objects.all()  # Извлекаем все заметки

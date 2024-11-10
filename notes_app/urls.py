@@ -13,8 +13,8 @@ urlpatterns = [
     path('login/',auth_views.LoginView.as_view(next_page='notes_app:main'), name='login'),
     path('logout/',auth_views.LogoutView.as_view(next_page='notes_app:main'), name='logout'),
     path('notes_list/', views.note_list_view, name='notes_list'),
-    path('note/<int:pk>/', NoteDetailView.as_view(), name='note_detail'),
     path('note/<int:pk>/delete/', note_delete_view, name='note_delete'),
+    path('note/<int:pk>/', NoteDetailView.as_view(), name='note_detail'),
     path('note_update/<int:pk>/', NoteUpdateView.as_view(), name='note_update'),
 
 ]

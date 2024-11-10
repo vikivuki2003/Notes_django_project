@@ -1,31 +1,34 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Список заметок</title>
+    <link rel="stylesheet" href="{% static 'css/my_styles.css' %}">
 </head>
 <body>
 <main>
-        <section class="note-list">
-            <h2>Список заметок</h2>
-            {% if notes %}
-                <ul>
-                    {% for note in notes %}
-                        <li>
-                            <h3>{{ note.title }}</h3>
-                            <p>{{ note.content }}</p>
-                            <small>Создано: {{ note.created_at }}</small>
-                            <a href="#">Редактировать</a> |
-                            <a href="#">Удалить</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>У вас пока нет заметок. Добавьте новую!</p>
-            {% endif %}
-        </section>
-
-
-    </main>
+    <section class="note-list">
+        <h2>Список заметок</h2>
+        {% if notes %}
+            <div class="notes-container">
+                {% for note in notes %}
+                    <div class="note-item">
+                        <h3><a href="{% url 'notes_app:note_detail' note.pk %}">{{ note.title }}</a></h3>
+                        <p>{{ note.content }}</p>
+                        <small>Создано: {{ note.created_at }}</small>
+                        <div class="note-actions">
+                            <a href="{% url 'notes_app:note_update' note.pk %}">Редактировать</a>
+                            <a href="{% url 'notes_app:note_delete' note.pk %}">Удалить</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>У вас пока нет заметок. Добавьте новую!</p>
+        {% endif %}
+    </section>
+</main>
 </body>
 </html>
