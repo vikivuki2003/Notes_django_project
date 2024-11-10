@@ -10,15 +10,17 @@
 <body>
 <main>
     <section class="note-detail">
-        <h2>{{ note.title }}</h2>
-        <p>{{ note.content }}</p>
-        <small>Создано: {{ note.created_at }}</small>
+        <div class="note-card">
+            <h2>{{ note.title }}</h2>
+            <p>{{ note.content }}</p>
+            <small>Создано: {{ note.created_at }}</small>
 
-        <!-- Кнопки для редактирования и удаления -->
-        <div class="note-actions">
-            <a href="{% url 'notes_app:note_update' note.pk %}">Редактировать</a> |
-            <a href="{% url 'notes_app:note_delete' note.pk %}">Удалить</a> |
-            <a href="{% url 'notes_app:main' %}">Назад к списку заметок</a>
+            <!-- Кнопки для редактирования и удаления -->
+            <div class="note-actions">
+                <a class="button" href="{% url 'notes_app:note_update' note.pk %}">Редактировать</a>
+                <a class="button delete" href="{% url 'notes_app:note_delete' note.pk %}">Удалить</a>
+                <a class="button" href="{% url 'notes_app:notes_list' %}">Назад к списку заметок</a>
+            </div>
         </div>
     </section>
 </main>

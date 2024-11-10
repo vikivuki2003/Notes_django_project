@@ -1,11 +1,19 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: rgba(208, 197, 246, 0.93);
+    display: flex;
+    flex-direction: column;
 }
-
+main {
+    flex: 1; /* Это заставляет main занимать все доступное пространство */
+}
 /* Заголовки */
 h1, h2 {
     color: #232121;
@@ -158,4 +166,18 @@ a:hover {
     grid-template-columns: repeat(5, 1fr); /* 5 колонок */
     grid-auto-rows: minmax(70px, auto); /* Минимальная высота строки */
     gap: 10px; /* Расстояние между заметками */
+}
+.note-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Высота 100% от видимой области */
+}
+.note-card {
+    background-color: #fff; /* Цвет фона карточки */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта поднятия */
+    padding: 20px; /* Внутренние отступы */
+    max-width: 600px; /* Максимальная ширина карточки */
+    width: 100%; /* Ширина 100% для адаптивности */
 }

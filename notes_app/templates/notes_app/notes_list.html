@@ -1,16 +1,18 @@
+{% extends 'notes_app/main.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
-    <title>Список заметок</title>
+{% block title %}Список заметок{% endblock %}
     <link rel="stylesheet" href="{% static 'css/my_styles.css' %}">
 </head>
 <body>
-<main>
+{% block content %}
     <section class="note-list">
-        <h2>Список заметок</h2>
+        <<h1>{% block header %}Список моих заметок{% endblock %}</h1>
         {% if notes %}
             <div class="notes-container">
                 {% for note in notes %}
@@ -31,4 +33,4 @@
     </section>
 </main>
 </body>
-</html>
+{% endblock %}

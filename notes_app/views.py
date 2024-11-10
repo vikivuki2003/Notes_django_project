@@ -22,6 +22,7 @@ class RegisterView(CreateView):
 class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Notes
     template_name = 'notes_app/note_detail.html'
+    context_object_name = 'note'
 
     def get_queryset(self):
         return Notes.objects.filter(user=self.request.user)
