@@ -2,17 +2,20 @@
 
 {% load static %}
 
-
-
 <head>
     <meta charset="UTF-8">
-{% block title %}Список заметок{% endblock %}
+    {% block title %}Список заметок{% endblock %}
     <link rel="stylesheet" href="{% static 'css/my_styles.css' %}">
 </head>
 <body>
 {% block content %}
     <section class="note-list">
-        <<h1>{% block header %}Список моих заметок{% endblock %}</h1>
+        <h1>{% block header %}Список моих заметок{% endblock %}</h1>
+        <!-- Элементы управления сортировкой -->
+        <div class="sorting-controls">
+            <a href="?sort=new" class="{% if request.GET.sort == 'new' %}active{% endif %}">Сначала новые</a>
+            <a href="?sort=old" class="{% if request.GET.sort == 'old' %}active{% endif %}">Сначала старые</a>
+        </div>
         {% if notes %}
             <div class="notes-container">
                 {% for note in notes %}

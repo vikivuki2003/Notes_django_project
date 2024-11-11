@@ -1,8 +1,15 @@
 html, body {
-    height: 100%;
-    margin: 0;
-}
+            height: 100%;
+            margin: 0;
+            display: flex; /* Используем flexbox для вертикального выравнивания */
+            flex-direction: column; /* Указываем направление по вертикали */
+
+            background-image: url("../images/bg.jpg");
+            background-color: rgba(208, 197, 246, 0.93);
+        }
+
 body {
+    background-image: url("../images/bg.jpg");
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
@@ -11,14 +18,16 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 main {
     flex: 1; /* Это заставляет main занимать все доступное пространство */
 }
+
 /* Заголовки */
 h1, h2 {
     color: #232121;
-    text-align: center;
-    margin-bottom: 20px;
+text-align: center; /* Заголовок по центру */
+            margin-bottom: 20px; /* Отступ снизу */
 }
 
 /* Стили для абзацев */
@@ -29,7 +38,7 @@ p {
 
 /* Стили для ссылок */
 a {
-    color: #291212;
+    color: #bd0707;
     text-decoration: none;
 }
 
@@ -38,21 +47,20 @@ a:hover {
 }
 
 /* Кнопки */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
+ button {
+            display: block; /* Кнопка занимает всю ширину */
+            margin: 0 auto; /* Центрируем кнопку */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
 
-.button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
+ button:hover {
+            background-color: #0056b3;
+        }
 
 
 .container {
@@ -66,17 +74,22 @@ a:hover {
     border-radius: 10px;
 }
 
-/* Стили для формы */
 .form-container {
-    flex-basis: 30%;
-    margin-right: 20px; /* Уменьшаем отступ справа */
+    background-color: #fff; /* Цвет фона для формы */
+    padding: 20px; /* Внутренние отступы для формы */
+    border-radius: 5px; /* Закругленные углы на форме */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для формы */
+    width: 400px; /* Установите фиксированную ширину формы */
+    max-width: 90%; /* Ограничение ширины на мобильных устройствах */
+    margin: 0 auto; /* Центрирование формы по горизонтали */
 }
+
 
 /* Карточка (пример компонента) */
 .card {
     background-color: #fefefe; /* Цвет фона карточки */
     border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Более заметная тень */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Более заметная тень */
     padding: 20px;
     margin-bottom: 20px; /* Отступ снизу */
     transition: transform 0.3s; /* Плавный переход при наведении */
@@ -123,6 +136,7 @@ a:hover {
     background-color: #d4edda; /* Зеленый фон для успешного сообщения */
     color: #155724; /* Темно-зеленый цвет текста */
 }
+
 .notes-column {
     flex-basis: calc(20% - 20px); /* Каждая колонка занимает 20% ширины минус отступы */
     margin-right: 10px; /* Отступ между колонками */
@@ -139,12 +153,11 @@ a:hover {
 }
 
 .message-container {
-    display: flex;
-    justify-content: center; /* Центрирование по горизонтали */
-    align-items: center; /* Центрирование по вертикали */
-    height: 100vh; /* Высота 100% от видимой области */
-    position: relative; /* Для абсолютного позиционирования дочерних элементов */
-}
+            display: flex;
+            justify-content: center; /* Центрирование по горизонтали */
+            width: 100%; /* Занимаем всю ширину */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
 
 .messages {
     list-style-type: none; /* Убираем маркеры списка */
@@ -161,18 +174,21 @@ a:hover {
 .info {
     color: blue; /* Цвет текста для информационных сообщений */
 }
+
 .notes-container {
     display: grid; /* Используем grid для контейнера заметок */
     grid-template-columns: repeat(5, 1fr); /* 5 колонок */
     grid-auto-rows: minmax(70px, auto); /* Минимальная высота строки */
     gap: 10px; /* Расстояние между заметками */
 }
+
 .note-detail {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Высота 100% от видимой области */
 }
+
 .note-card {
     background-color: #fff; /* Цвет фона карточки */
     border-radius: 10px; /* Закругленные углы */
@@ -180,4 +196,62 @@ a:hover {
     padding: 20px; /* Внутренние отступы */
     max-width: 600px; /* Максимальная ширина карточки */
     width: 100%; /* Ширина 100% для адаптивности */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    align-items: center; /* Вертикальное центрирование */
+    padding: 10px 20px; /* Отступы для навигации */
+    background-color: #f8f9fa; /* Цвет фона навигации */
+    position: relative; /* Устанавливаем позиционирование для дочерних элементов */
+}
+
+nav ul {
+    list-style: none; /* Убираем маркеры у списка */
+    margin: 0; /* Убираем отступы */
+    padding: 0; /* Убираем внутренние отступы */
+    display: flex; /* Делаем список горизонтальным */
+}
+
+nav ul li {
+    margin-right: 20px; /* Отступы между элементами */
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* Убираем отступ для последнего элемента */
+}
+
+.centered-text {
+    text-align: center; /* Центрируем текст */
+    margin-top: 20px; /* Добавляем отступ сверху */
+    font-size: 1.2em; /* Размер шрифта */
+    color: #291212; /* Цвет текста */
+}
+
+.logout-button {
+    background-color: #291212; /* Цвет фона для кнопки */
+    color: white; /* Цвет текста */
+    border: none; /* Без обводки */
+    border-radius: 5px; /* Закругленные углы */
+    padding: 5px 10px; /* Внутренние отступы */
+    cursor: pointer; /* Курсор в виде указателя */
+}
+
+.logout-button:hover {
+    background-color: #0056b3; /* Цвет при наведении */
+}
+.sorting-controls {
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.sorting-controls a {
+    margin-right: 15px; /* Отступы между ссылками */
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #007bff; /* Цвет ссылки */
+}
+
+.sorting-controls a.active {
+    font-weight: bold; /* Жирный шрифт для активной ссылки */
+    color: #370505; /* Цвет для выделенной ссылки */
 }

@@ -8,51 +8,56 @@
     <title>{% block title %}Мои заметки{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/my_styles.css' %}">
     {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 </head>
 <body>
-    <header>
-        <h1>{% block header %}Мои заметки{% endblock %}</h1>
-        <!-- Новое сообщение о необходимости входа -->
-        <div style="text-align: center; margin-top: 20px;">
-            <p style="font-size: 1.2em; color: #911111;">
-                Чтобы начать создавать свои заметки, пожалуйста, войдите в свой профиль.
+<header>
+    <h1>{% block header %}Мои заметки{% endblock %}</h1>
+    <!-- Новое сообщение о необходимости входа -->
+    <div style="text-align: center; margin-top: 20px;">
+
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'notes_app:main' %}">Главная</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'notes_app:notes_list' %}">Мои заметки</a></li>
+                <li><a href="{% url 'notes_app:create' %}">Добавить заметку</a></li>
+            {% endif %}
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Контакты</a></li>
+            {% if user.is_authenticated %}
+                <form action="{% url 'notes_app:logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-button">Выйти</button>
+                </form>
+            {% else %}
+                <li><a href="{% url 'notes_app:login' %}">Войти в профиль</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% if request.path == '/' %}>
+        <div class="centered-text">
+            <p>
+                <strong>Чтобы начать создавать свои заметки, пожалуйста, войдите в свой профиль.</strong>
             </p>
         </div>
-        <nav>
-            <ul style="list-style-type: none; padding: 0;">
-                <li><a href="{% url 'notes_app:main' %}">Главная</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'notes_app:notes_list' %}">Мои заметки</a></li>
-                    <li><a href="{% url 'notes_app:create' %}">Добавить заметку</a></li>
-                {% endif %}
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Контакты</a></li>
-                {% if user.is_authenticated %}
-                    <form action="{% url 'notes_app:logout' %}" method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit">Выйти</button>
-                    </form>
-                {% else %}
-                    <li><a href="{% url 'notes_app:login' %}">Войти в профиль</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
+    {% endif %}
+</header>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
 
-    <footer>
-        &copy; 2023 Мои заметки. Все права защищены.
-    </footer>
+<footer>
+    &copy; 2023 Мои заметки. Все права защищены.
+</footer>
 
 </body>
 </html>

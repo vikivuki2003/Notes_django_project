@@ -67,5 +67,11 @@ def note_delete_view(request, pk):
     return render(request, 'notes_app/delete_note.html', {'object': note})
 
 def note_list_view(request):
-    notes = Notes.objects.all()  # Извлекаем все заметки
+    sort_order = request.GET.get('sort', 'new')  # Получаем параметр сортировки из запроса
+
+    if sort_order == 'new':
+        notes = Notes.objects.all().order_by('-created_at')  # Сортировка от новых к старым
+    else:
+        notes = Notes.objects.all().order_by('created_at')  # Сортировка от старых к новым
+
     return render(request, 'notes_app/notes_list.html', {'notes': notes})
