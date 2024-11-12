@@ -29,6 +29,26 @@
                     </div>
                 {% endfor %}
             </div>
+
+            {% if notes.has_other_pages %}
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if notes.has_previous %}
+                            <a href="?sort={{ request.GET.sort }}&page=1">&laquo; Первая</a>
+                            <a href="?sort={{ request.GET.sort }}&page={{ notes.previous_page_number }}">Предыдущая</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Страница {{ notes.number }} из {{ notes.paginator.num_pages }}.
+                        </span>
+
+                        {% if notes.has_next %}
+                            <a href="?sort={{ request.GET.sort }}&page={{ notes.next_page_number }}">Следующая</a>
+                            <a href="?sort={{ request.GET.sort }}&page={{ notes.paginator.num_pages }}">Последняя &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
         {% else %}
             <p>У вас пока нет заметок. Добавьте новую!</p>
         {% endif %}

@@ -39,8 +39,9 @@ p {
 
 /* Стили для ссылок */
 a {
-    color: #bd0707;
+    color: #125271;
     text-decoration: none;
+    font-weight: 700;
 }
 
 a:hover {
@@ -254,10 +255,43 @@ nav ul li:last-child {
 .sorting-controls a {
     margin-right: 15px; /* Отступы между ссылками */
     text-decoration: none; /* Убираем подчеркивание */
-    color: #007bff; /* Цвет ссылки */
+    color: #592d2d; /* Цвет ссылки */
+    text-align: center;
 }
 
 .sorting-controls a.active {
     font-weight: bold; /* Жирный шрифт для активной ссылки */
-    color: #370505; /* Цвет для выделенной ссылки */
+    color: #051137; /* Цвет для выделенной ссылки */
+    text-align: center;
+}
+
+.pagination {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    justify-content: center; /* Центрируем элементы по горизонтали */
+    margin: 20px 0; /* Отступы сверху и снизу */
+}
+
+.step-links {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+}
+
+.step-links a {
+    color: #125271; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 10px 15px; /* Отступы вокруг ссылок */
+    margin: 0 5px; /* Отступы между ссылками */
+    border: 1px solid #125271; /* Рамка вокруг ссылок */
+    border-radius: 5px; /* Закругленные углы */
+    transition: background-color 0.3s; /* Плавный переход для фона */
+}
+
+.step-links a:hover {
+    background-color: #125271; /* Цвет фона при наведении */
+    color: white; /* Цвет текста при наведении */
+}
+
+.current {
+    font-weight: bold; /* Жирный текст для текущей страницы */
+    padding: 10px 15px; /* Отступы вокруг текста */
 }
