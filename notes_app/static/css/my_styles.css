@@ -33,7 +33,8 @@ text-align: center; /* Заголовок по центру */
 /* Стили для абзацев */
 p {
     margin: 15px 0;
-    color: #555;
+    color: #100f0f;
+    text-align: center;
 }
 
 /* Стили для ссылок */
@@ -143,13 +144,18 @@ a:hover {
 }
 
 .note-item {
-    width: 250px; /* Фиксированная ширина для заметок */
-    height: 250px; /* Фиксированная высота для заметок */
+    width: 250px; /* Фиксированная ширина для заметок (может быть адаптирована) */
+    height: auto; /* Высота устанавливается автоматически в зависимости от содержимого */
     box-sizing: border-box; /* Включаем отступы и границы в размеры элемента */
     margin-bottom: 20px; /* Отступ между заметками по высоте */
-    display: flex; /* Используем flexbox внутри заметки */
-    flex-direction: column; /* Вертикальная компоновка */
-    justify-content: space-between; /* Равномерное распределение */
+    padding: 15px; /* Внутренние отступы */
+    background-color: #d6d6e4; /* Цвет фона карточки */
+    border: 1px solid #291212; /* Рамка вокруг заметки */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для эффекта поднятия */
+    transition: transform 0.3s; /* Плавный переход при наведении */
+    overflow-wrap: break-word; /* Перенос длинных слов на новую строку */
+    word-wrap: break-word; /* Для поддержки более старых браузеров */
 }
 
 .message-container {

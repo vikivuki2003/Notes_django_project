@@ -10,7 +10,6 @@
 <body>
 {% block content %}
     <section class="note-list">
-        <h1>{% block header %}Список моих заметок{% endblock %}</h1>
         <!-- Элементы управления сортировкой -->
         <div class="sorting-controls">
             <a href="?sort=new" class="{% if request.GET.sort == 'new' %}active{% endif %}">Сначала новые</a>

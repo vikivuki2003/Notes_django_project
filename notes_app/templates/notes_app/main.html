@@ -29,8 +29,7 @@
                 <li><a href="{% url 'notes_app:notes_list' %}">Мои заметки</a></li>
                 <li><a href="{% url 'notes_app:create' %}">Добавить заметку</a></li>
             {% endif %}
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Контакты</a></li>
+            <li><a href="{% url 'notes_app:contacts' %}">Контакты</a></li>
             {% if user.is_authenticated %}
                 <form action="{% url 'notes_app:logout' %}" method="post" style="display:inline;">
                     {% csrf_token %}

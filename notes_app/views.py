@@ -7,6 +7,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CustomUserCreationForm, NotesForm
 from .models import Notes
 
+
+def contact_view(request):
+    return render(request, 'notes_app/contact.html')
+
+
 class MainPageView(ListView):
     model = Notes
     template_name = 'notes_app/main.html'

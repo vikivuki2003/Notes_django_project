@@ -8,7 +8,8 @@ from notes_app.views import RegisterView, CreateView, NoteDetailView, NoteCreate
 app_name = 'notes_app'
 urlpatterns = [
     path('', MainPageView.as_view(), name='main'),
-    path('create', NoteCreateView.as_view(), name='create'),
+    path('contacts/', views.contact_view, name='contacts'),
+    path('create/', NoteCreateView.as_view(), name='create'),
     path('register/',RegisterView.as_view(), name='register'),
     path('login/',auth_views.LoginView.as_view(next_page='notes_app:main'), name='login'),
     path('logout/',auth_views.LogoutView.as_view(next_page='notes_app:main'), name='logout'),
